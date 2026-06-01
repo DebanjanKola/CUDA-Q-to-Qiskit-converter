@@ -55,46 +55,28 @@ The converter follows a multi-step pipeline:
 
 ---
 
-
-### Installation
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/NishankaDas/cudaq-qiskit-converter.git
-
-# 2. Navigate into the directory
-cd cudaq-qiskit-converter
-
-# 3. Install the module
-pip install .
-```
-
 ### Usage
 
 ```python
 from cudaq_to_qiskit import convert_cudaq_source_to_qiskit
 import os
 
-# Provide the path to your CUDA-Q source file
 cudaq_file_path = input("Enter the path of the CUDA-Q source file: ")
 
 if not os.path.exists(cudaq_file_path):
     print("Error: File not found!")
     exit()
 
-# Read and convert
 with open(cudaq_file_path, "r") as file:
     cudaq_source_code = file.read()
 
 circuit, qiskit_code = convert_cudaq_source_to_qiskit(cudaq_source_code)
 
-# Display output
 print("Qiskit Circuit:")
 print(circuit)
 print("\nQiskit Code:")
 print(qiskit_code)
 
-# Save to file
 output_file = input("Enter output file name: ")
 with open(output_file, "w") as f:
     f.write(qiskit_code)
